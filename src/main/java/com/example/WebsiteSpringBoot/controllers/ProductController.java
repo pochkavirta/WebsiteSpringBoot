@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
-@RequiredArgsConstructor
+@Controller // Аннотация, помечающая класс как Spring MVC Controller
+@RequiredArgsConstructor // Lombok аннотация генерирует конструктор с обязательными аргументами (final полями)
 public class ProductController {
-    private final ProductService productService;
+    private final ProductService productService; // final - значит значение должно быть установлено в конструкторе (что делает @RequiredArgsConstructor)
 
-    @GetMapping("/")
-    public String products(@RequestParam(name = "title", required = false) String title, Model model) {
-        model.addAttribute("products", productService.listProducts(title));
-        return "products";
+    @GetMapping("/") // Обработчик GET-запросов на корневой путь ("/")
+    public String products(@RequestParam(name = "title", required = false) String title, Model model) { // Параметр запроса "title" (не обязательный), Объект Model для передачи данных в представление
+        model.addAttribute("products", productService.listProducts(title)); // Добавление в модель списка продуктов (поиск по title если указан)
+        return "products"; // Возвращает имя шаблона "products.ftlh"
     }
 
     @GetMapping("/product/{id}")
-    public String productInfo(@PathVariable Long id, Model model) {
-        model.addAttribute("product", productService.getProductById(id));
-        return "product-info";
+    public String productInfo(@PathVariable Long id, Model model) { // Извлечение ID продукта из пути URL
+        model.addAttribute("product", productService.getProductById(id)); // Добавление в модель найденного продукта
+        return "product-info"; // Возвращает имя шаблона "product-info.ftlh"
     }
 
     @PostMapping("/product/create")

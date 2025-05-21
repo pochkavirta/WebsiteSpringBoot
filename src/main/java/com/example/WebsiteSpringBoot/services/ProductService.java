@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@Slf4j
-@RequiredArgsConstructor
+@Service // Аннотация @Service указывает, что этот класс является сервисом - компонентом бизнес-логики
+@Slf4j // Аннотация Lombok @Slf4j автоматически создает логгер (переменную log) для класса
+@RequiredArgsConstructor // Аннотация Lombok @RequiredArgsConstructor генерирует конструктор для всех final полей
 public class ProductService {
     private final ProductRepository productRepository;
 
@@ -22,6 +22,7 @@ public class ProductService {
     }
 
     public void saveProduct(Product product) {
+        log.info("Saving new {}", product);
         productRepository.save(product);
     }
 
