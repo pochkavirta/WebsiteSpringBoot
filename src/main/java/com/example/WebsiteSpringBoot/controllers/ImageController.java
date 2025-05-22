@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.ByteArrayInputStream;
 
 @RestController
+// Аннотация, помечающая класс как Spring REST-контроллер (Автоматически преобразует возвращаемые значения в JSON/HTTP-ответы)
 @RequiredArgsConstructor
 public class ImageController {
     private final ImageRepository imageRepository;
@@ -20,10 +21,10 @@ public class ImageController {
     @GetMapping("/images/{id}")
     private ResponseEntity<?> getImageById(@PathVariable long id) {
         Image image = imageRepository.findById(id).orElse(null);
-        return ResponseEntity.ok()
-                .header("fileName", image.getOriginalFileName())
-                .contentType(MediaType.valueOf(image.getContentType()))
-                .contentLength(image.getSize())
-                .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
+        return ResponseEntity.ok() // Строим HTTP-ответ
+                .header("fileName", image.getOriginalFileName()) // Добавляем кастомный заголовок с оригинальным именем файла
+                .contentType(MediaType.valueOf(image.getContentType())) // Устанавливаем Content-Type из метаданных изображения
+                .contentLength(image.getSize()) // Указываем размер файла в байтах
+                .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes()))); // Тело ответа: оборачиваем байты в InputStreamResource
     }
 }

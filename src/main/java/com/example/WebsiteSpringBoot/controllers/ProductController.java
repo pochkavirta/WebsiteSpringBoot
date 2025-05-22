@@ -29,7 +29,7 @@ public class ProductController {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("images", product.getImages());
-        return "product-info"; // Возвращает имя шаблона "product-info.ftlh"
+        return "product-info";
     }
 
     @PostMapping("/product/create")

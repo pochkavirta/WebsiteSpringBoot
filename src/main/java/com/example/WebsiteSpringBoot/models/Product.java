@@ -30,11 +30,12 @@ public class Product {
     @Column(name = "author")
     private String author;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+    // Связь "один-ко-многим" с изображениями
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
     private LocalDateTime dateOfCreated;
 
-    @PrePersist
+    @PrePersist // Метод, выполняемый перед сохранением сущности
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
