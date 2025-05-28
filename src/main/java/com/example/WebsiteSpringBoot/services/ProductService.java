@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-@Service // Аннотация @Service указывает, что этот класс является сервисом - компонентом бизнес-логики
+@Service
 @Slf4j // Аннотация Lombok @Slf4j автоматически создает логгер (переменную log) для класса
 @RequiredArgsConstructor // Аннотация Lombok @RequiredArgsConstructor генерирует конструктор для всех final полей
 public class ProductService {

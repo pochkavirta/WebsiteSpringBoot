@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
-@Controller // Аннотация, помечающая класс как Spring MVC Controller
+@Controller
 @RequiredArgsConstructor // Lombok аннотация генерирует конструктор с обязательными аргументами (final полями)
 public class ProductController {
     private final ProductService productService; // final - значит значение должно быть установлено в конструкторе (что делает @RequiredArgsConstructor)
