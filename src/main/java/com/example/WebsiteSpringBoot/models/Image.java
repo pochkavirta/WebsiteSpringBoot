@@ -25,8 +25,7 @@ public class Image {
     private String contentType;
     @Column(name = "isPreviewImage")
     private boolean isPreviewImage;
-    @Lob
-    // Аннотация @Lob указывает, что поле должно храниться как LOB (Large Object) (Для байтовых массивов обычно соответствует BLOB в базе данных)
+    @Lob // Аннотация @Lob указывает, что поле должно храниться как LOB (Large Object) (Для байтовых массивов обычно соответствует BLOB в базе данных)
     private byte[] bytes;
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER) // Связь "многие-к-одному" с продуктом
     private Product product;

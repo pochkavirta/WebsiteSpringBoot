@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.ByteArrayInputStream;
 
-@RestController
-// Аннотация, помечающая класс как Spring REST-контроллер (Автоматически преобразует возвращаемые значения в JSON/HTTP-ответы)
+@RestController // Аннотация, помечающая класс как Spring REST-контроллер (Автоматически преобразует возвращаемые значения в JSON/HTTP-ответы)
 @RequiredArgsConstructor
 public class ImageController {
     private final ImageRepository imageRepository;

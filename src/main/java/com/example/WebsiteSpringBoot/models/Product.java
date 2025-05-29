@@ -29,8 +29,7 @@ public class Product {
     private String city;
     @Column(name = "author")
     private String author;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
-    // Связь "один-ко-многим" с изображениями
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product") // Связь "один-ко-многим" с изображениями
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
     private LocalDateTime dateOfCreated;
